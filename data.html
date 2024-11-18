@@ -13,7 +13,7 @@
         <div class="form-container">
         <h1>Data form</h1>
             
-                <i<input type="text" id="School" name="School" placeholder="School"  required>
+                <input type="text" id="School" name="School" placeholder="School"  required>
                     <input type="text" id="Course" name="Course" placeholder="Course">
                     <div class="unit-wrapper">
                         <input type="text" id="UnitCode" name="Unit Code" placeholder="Unit Code">
@@ -26,6 +26,45 @@
                 </div>
 
             </form>
+            <div id="reportOutput"></div>
         </div>
+
+
+        <script>
+            // JavaScript to handle form submission and display report
+            document.getElementById('reportForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form from submitting
+    
+                // Get form values
+                const school = document.getElementById('School').value;
+                const course = document.getElementById('Course').value;
+                const unitCode = document.getElementById('UnitCode').value;
+                const unitName = document.getElementById('UnitName').value;
+                const lecturer = document.getElementById('Lecturer').value;
+                const semester = document.getElementById('Semester').value;
+                const group = document.getElementById('Group').value;
+    
+                // Basic form validation (you can expand this as needed)
+                if (school === "" || course === "" || unitCode === "" || unitName === "" || lecturer === "" || semester === "" || group === "") {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+    
+                // Generate report
+                const reportOutput = `
+                    <h2>Generated Report</h2>
+                    <p><strong>School:</strong> ${school}</p>
+                    <p><strong>Course:</strong> ${course}</p>
+                    <p><strong>Unit Code:</strong> ${unitCode}</p>
+                    <p><strong>Unit Name:</strong> ${unitName}</p>
+                    <p><strong>Lecturer:</strong> ${lecturer}</p>
+                    <p><strong>Semester:</strong> ${semester}</p>
+                    <p><strong>Group:</strong> ${group}</p>
+                `;
+    
+                // Display the report
+                document.getElementById('reportOutput').innerHTML = reportOutput;
+            });
+        </script>
     </body>
 </html>
